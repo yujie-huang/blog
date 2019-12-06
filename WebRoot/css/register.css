@@ -1,0 +1,10 @@
+div{
+    border: 1px red solid;
+}
+.container{
+    width:400px;
+}
+.btn{
+    margin-left: 40px;
+    margin-right: 40px;
+}

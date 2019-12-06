@@ -46,4 +46,12 @@ public class UserService {
 		return dao.findByUserName(userName);
 	}
 
+	public User reUser(User user){
+		UserDao dao = new UserDao();
+		User rUser = dao.reUser(user);
+		
+		return rUser;
+		
+	}
+
 }

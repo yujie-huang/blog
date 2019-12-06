@@ -2,6 +2,8 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,12 +33,18 @@ public class ArticleAddServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		Article article = new Article();
-		article.setArticle_id(request.getParameter("headline"));
+		
 		article.setHeadline(request.getParameter("headline"));
 		article.setContent(request.getParameter("article"));
-		article.setUser_id((String) session.getAttribute("userName"));
+		article.setUserName((String) session.getAttribute("userName"));
+		article.setType_id(request.getParameter("type_id"));
+		
+		//获取当前时间并格式化
+		Date dN = new Date();
+		SimpleDateFormat ft = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+		article.setPublish_date(ft.format(dN));
 		ArticleService articleservice = new ArticleService();
-		if(articleservice.articleAdd(article)){
+		if(articleservice.articleAdd(article)!=null){
 			response.sendRedirect("index");
 			
 		}

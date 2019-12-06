@@ -1,11 +1,8 @@
 package dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+
 
 import common.DbObject;
 import entity.User;
@@ -16,33 +13,19 @@ public class UserDao {
 
 	}
 	public User addUser(User user){
-		Connection cn = null;
-		PreparedStatement st = null;
-		DbObject db = new DbObject();
-		
-		//1. 
-		try {
-			cn = db.open();
-			
-			//4. 
-			String sql = "insert into Users (UserName,Password,FullName) "
-					+ " values(?,?,?)";
-			
-			st = cn.prepareStatement(sql);
-			
-			st.setString(1, user.getUserName());
-			st.setString(2, user.getPassword());
-			st.setString(3, user.getFullName());
-			int ret = st.executeUpdate();
-			
-			if (ret>0)
+		int i=0;
+		Object[] param = new Object[3];
+		param[0]=user.getUserName();
+		param[1]=user.getPassword();
+		param[2]=user.getFullName();
+		try{
+			String sql = "insert into users(userName,password,fullName) values(?,?,?)";
+			i = new DbObject().executeUpdate(sql, param);
+			if(i>0){
 				return user;
-			
-		} catch (SQLException e) {
+			}
+		}catch(Exception e){
 			e.printStackTrace();
-		} finally{
-			//
-			db.close(cn, st, null);
 		}
 		
 		return null;		
@@ -50,23 +33,15 @@ public class UserDao {
 
 	public User findByUserName(String userName){
 		DbObject db = new DbObject();
-		
-		Connection cn = null;
-		PreparedStatement st = null;
 		ResultSet rs = null;
 		User user = null;
 		
 		try {
-			cn = db.open();
-			
 			//4.
 			String sql = "select * from Users where userName=?";
-			st = cn.prepareStatement(sql);
-			
-			st.setString(1, userName);
-			
-			rs = st.executeQuery();
-			
+			Object param[] = new Object[1];
+			param[0]=userName;
+			rs = db.executeQuery(sql,param );	
 			if (rs.next()){
 				user = new User();
 				user.setUserName(rs.getString("UserName"));
@@ -77,9 +52,38 @@ public class UserDao {
 			e.printStackTrace();
 		} finally{
 			//¹
-			db.close(cn, st, rs);
+			db.close();
+		}
+		try {
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return user;		
 	}
 
+
+	public User reUser(User user){
+		int i=0;
+		Object[] param = new Object[7];
+		param[6]=user.getUserName();
+		param[0]=user.getFullName();
+		param[1]=  user.getSex();
+		param[2]=  user.getBirth();
+		param[3]=  user.getEmail();
+		param[4]=user.getWechat() ;
+		param[5]= user.getInformation();
+		try{
+			String sql = "update Users set fullName=?,sex=?,birth=?,email=?,wechat=?,information=? where userName=?";
+			i = new DbObject().executeUpdate(sql, param);
+			if(i>0){
+				return user;
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
 }

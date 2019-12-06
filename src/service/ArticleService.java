@@ -7,66 +7,28 @@ import java.sql.SQLException;
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpSession;
 
+import dao.ArticleDao;
+import dao.UserDao;
 import entity.Article;
+import entity.User;
 
 public class ArticleService {
-	public boolean articleAdd(Article article){
+	public Article articleAdd(Article article){
 		
 		
-	Connection cn = null;
-	java.sql.Statement st = null;
-	boolean flag=false;
-	//1.注册驱动
-	try {
-		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-	
-		//2.连接字符串
-		String url = "jdbc:sqlserver://localhost\\MSSQLSERVER:1433;user=sa;password=123;database=blog";
+		ArticleDao dao = new ArticleDao();
+		Article newArticle = dao.addArticle(article);
 		
-		
-		//3.连接数据库
-		cn = DriverManager.getConnection(url);
-		
-		//4.执行SQL语句
-		st = cn.createStatement();
-		String sql = "insert into article(article_id,user_id,headline,content)"
-				+"values('"+article.getArticle_id()+"','"+article.getUser_id()+"','"+article.getHeadline()+"','"+article.getContent()+"')";
-		System.out.println(sql);
-		st.executeUpdate(sql);
-		flag=true;
-	} catch (ClassNotFoundException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} finally{
-		//5.关闭连接
-		if(st!=null){
-			try {
-				st.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		if(cn!=null)
-			try {
-				cn.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	}
-
-	return flag;
+		return newArticle;
 	}
 	
 	public Article articleShow(String art_id){
 		Article article = new Article();
-		
+
 		
 		
 		return article;
 	}
+	
+	
 }
