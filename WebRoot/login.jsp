@@ -12,10 +12,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>登录</title>
-    <link rel="stylesheet" href="./bootstrap-4.3.1-dist/css/bootstrap.min.css">
-    <script src="./js/jquery-3.3.1.min.js"></script>
-    <script src="./bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <script src="static/js/jquery-3.3.1.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="static/css/login.css">
 </head>
 <body>
     <div class="container"> 
@@ -30,6 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <label for="password">密码：</label>
                 <input type="password" name="password" id="pw1" class="form-control">
             </div>
+            
             <button type="submit" class="btn btn-primary">登录</button>
             <a href="register"><button type="button" id="reg" class="btn btn-primary">注册</button></a>
             <a href="#">忘记密码</a>

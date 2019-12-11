@@ -15,17 +15,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<link rel="stylesheet" href="css/admin.css">
-    <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
-    <script src="js/jquery-1.2.1.js"></script>
-    <script src="bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="static/css/admin.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <script src="static/js/jquery-1.2.1.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
 	
 
   </head>
   
   <body>
-    <jsp:include  page="adminheader.jsp"/>
-    <jsp:include  page="adminMenu.jsp"/>
+    <%@ include file="adminheader.jsp" %>  
+    <%@ include file="adminMenu.jsp" %> 
     
     <div class="right-content">
         <table class="table table-dark table-hover" >

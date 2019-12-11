@@ -16,12 +16,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<link rel="stylesheet" href="./css/usercenter.css">
+	<link rel="stylesheet" href="static/css/usercenter.css">
+	<script src="static/js/jquery-3.3.1.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="static/css/index.css">
 
   </head>
   
   <body>
-    	<jsp:include  page="header.jsp"/>
+    	<%@ include file="header.jsp" %>
     	<div class="content">
     		<div class="left-bar1">
     			<jsp:include page="usercenterTP.jsp"/>
@@ -41,6 +44,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		</form>
     		</div>
     	</div>
-    	<jsp:include  page="footer.jsp"/>
+    	<%@ include file="footer.jsp" %>
   </body>
 </html>

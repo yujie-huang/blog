@@ -1,5 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<link rel="stylesheet" href="css/admin.css">
 <div class="left_menu">
         <ul class="nav flex-column">
             <li class="nav-item">

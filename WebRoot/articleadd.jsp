@@ -16,8 +16,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<script src="./js/jquery-3.3.1.min.js"></script>
-    <script src="./bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+	<script src="static/js/jquery-3.3.1.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="./umeditor-1.2.3/umeditor.config.js"></script>
 	<script type="text/javascript" src="./umeditor-1.2.3/gruntfile.js"></script>
 	<script type="text/javascript" charset="utf-8" src="./umeditor-1.2.3/lang/zh-cn/zh-cn.js"></script>

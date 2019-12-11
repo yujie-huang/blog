@@ -12,32 +12,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>文章</title>
-    <link rel="stylesheet" href="./bootstrap-4.3.1-dist/css/bootstrap.min.css">
-    <script src="./js/jquery-3.3.1.min.js"></script>
-    <script src="./bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="./css/index.css">
-    <link rel="stylesheet" href="./css/article.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <script src="static/js/jquery-3.3.1.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="static/css/index.css">
+    <link rel="stylesheet" href="static/css/article.css">
 </head>
 <body>
-    <nav id="header"> 
-        <div class="floatleft log1">
-            <a href="#">code story</a>
-        </div>
-        <div class="floatleft search1">
-            <form action="#" role="search">
-                <div >
-                    <input type="text"  name="" id="" placeholder="search">
-                    <button type="submit" class="btn-default"> 搜索</button>
-                </div>
-            </form>
-        </div>
-        <div class="floatleft login1">
-            <a href="#">登录</a>
-        </div>
-        <div class="floatleft register1">
-            <a href="#">注册</a>
-        </div>
-    </nav>
+   <%@ include file="header.jsp" %>
     <div id="content" class="container">
         <div class="leftcontent floatleft">
             <div class="article">
@@ -75,10 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         
     </div>
-    <div id="footer">
-        <hr>
-        &copy;2019
-    </div>
+    <%@ include file="footer.jsp" %>
 
 
 

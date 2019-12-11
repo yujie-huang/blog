@@ -12,11 +12,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/userinfo.css">
-    <link rel="stylesheet" href="./css/usercenter.css">
+    <link rel="stylesheet" href="static/css/userinfo.css">
+    <link rel="stylesheet" href="static/css/usercenter.css">
+    <script src="static/js/jquery-3.3.1.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
+	<%@ include file="header.jsp" %>
 	<div class="content">
 	<div class="left-bar1">
 	<jsp:include page="usercenterTP.jsp"></jsp:include>
@@ -27,6 +30,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         
     </div>
     </div>
-    <jsp:include page="footer.jsp"></jsp:include>
+    <%@ include file="footer.jsp" %>
 </body>
 </html>
