@@ -3,6 +3,7 @@ package service;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpSession;
@@ -30,5 +31,9 @@ public class ArticleService {
 		return article;
 	}
 	
+	public ArrayList<Article> getArticlesbyTitle_id(String type_id){
+		return new ArticleDao().findArticleBytype_id(type_id);
+		
+	}
 	
 }

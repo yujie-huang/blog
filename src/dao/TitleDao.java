@@ -15,25 +15,27 @@ public class TitleDao {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public boolean addTitle(String userName,String typeName){
+	public Title addTitle(String userName,String typeName){
 		boolean flag = false;
-		
-		int i=0;
+		Title title = new Title();
+		int i=-1;
 		Object[] param = new Object[2];
 		param[0]=userName;
 		param[1]=typeName;
 		
 		try{
-			String sql = "insert into title(type_name,userName) values(?,?)";
+			String sql = "insert into title(userName,type_name) values(?,?)";
 			i = new DbObject().executeUpdate(sql, param);
 			if(i>0){
-				flag=true;
+				title.setType_id(i);
+				title.setType_name(typeName);
+				title.setUserName(userName);
 			}
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 
-		return flag;
+		return title;
 		
 	}
 
@@ -52,7 +54,7 @@ public class TitleDao {
 			while(rs.next()){
 				Title title = new Title();
 				title.setType_id(rs.getInt("type_id"));
-				title.setType_name(rs.getString("typename"));
+				title.setType_name(rs.getString("type_name"));
 				title.setUserName(rs.getString("userName"));
 				list.add(title);
 			}
@@ -71,6 +73,49 @@ public class TitleDao {
 		return list;
 	}
 	
-	
+	public boolean update(String type_id, String type_name) {
+		boolean flag = false;
+		
+		int i=0;
+		Object[] param = new Object[2];
+		param[1]=type_id;
+		param[0]=type_name;
+		
+		try{
+			String sql = "update  title set type_name=? where type_id=?";
+			i = new DbObject().executeUpdate(sql, param);
+			if(i>0){
+				flag=true;
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+
+		return flag;
+	}
+
+	public boolean delbyID(String type_id) {
+		// TODO Auto-generated method stub
+       boolean flag = false;
+		
+		int i=0;
+		Object[] param = new Object[1];
+		param[0]=type_id;
+		
+		
+		try{
+			String sql = "delete from title where type_id=?";
+			i = new DbObject().executeUpdate(sql, param);
+			if(i>0){
+				flag=true;
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+
+		return flag;
+		
+		
+	}
 
 }

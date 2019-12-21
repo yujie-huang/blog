@@ -17,11 +17,9 @@ import entity.User;
 
 public class UserService {
 	
-	public User register(User user){
+	public boolean register(User user){
 		UserDao dao = new UserDao();
-		User newUser = dao.addUser(user);
-		
-		return newUser;
+			return dao.addUser(user);
 	}
 	
 	public boolean login(String userName, String password){

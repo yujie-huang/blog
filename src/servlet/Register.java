@@ -30,8 +30,14 @@ public class Register extends HttpServlet {
 		user.setFullName(nikName);
 		user.setPassword(password);
 		user.setUserName(userName);
+		
 		UserService usersevice = new UserService();
-		if(usersevice.register(user)==null){
+		if(usersevice.getUserByUserName(userName)!=null){
+			request.setAttribute("err", "该账户已被注册");
+			request.getRequestDispatcher("register.jsp").forward(request, response);
+			
+		}
+		else if(usersevice.register(user)){
 			response.sendRedirect("login");
 		}
 		else {

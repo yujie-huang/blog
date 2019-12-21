@@ -8,6 +8,7 @@ public class Admin {
 	private String userId;
 	private String userPassword;
 	private String power;
+//	private String  string;
 	public String getUserId() {
 		return userId;
 	}

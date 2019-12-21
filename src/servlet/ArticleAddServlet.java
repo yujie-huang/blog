@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -13,7 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import service.ArticleService;
+import service.TitleService;
 import entity.Article;
+import entity.Title;
 @WebServlet("/articleadd")
 public class ArticleAddServlet extends HttpServlet {
 
@@ -21,7 +24,11 @@ public class ArticleAddServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		if(session.getAttribute("userName")!=null){
+		String userName=(String) session.getAttribute("userName");
+		if(userName!=null){
+			TitleService tService = new TitleService();
+			ArrayList<Title> list = tService.findTitleByuserName(userName);
+			request.setAttribute("list", list);
 			request.getRequestDispatcher("articleadd.jsp").forward(request, response);
 		}
 			

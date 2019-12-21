@@ -17,7 +17,7 @@
          <div class='flaotleft'>
          	<a href='articleadd'>添加文章</a>
          </div>
-         <div class='floatleft login1'>session.getAttribute("userName")</div>
+         <div class='floatleft login1'><a href="userinfo">${fullName }</a></div>
          <div class='floatleft register1'> 
          	<a href='loginout'>退出</a>
          </div>

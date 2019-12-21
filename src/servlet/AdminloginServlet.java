@@ -29,10 +29,14 @@ public class AdminloginServlet extends HttpServlet {
 		Admin admin = new Admin();
 		admin.setUserId(request.getParameter("u"));
 		admin.setUserPassword(request.getParameter("p"));
+		
 		if(new AdminService().login(admin)){
 			HttpSession session = request.getSession();
-			session.setAttribute("aduser", admin.getUserId());
+			session.setAttribute("admin", admin.getUserId()); //区分管理员与普通用户
 			response.sendRedirect("usermanage");
+		}
+		else {
+			response.sendRedirect("admin");
 		}
 
 	}

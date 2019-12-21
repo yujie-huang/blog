@@ -3,7 +3,9 @@ package service;
 import java.util.List;
 
 import dao.AdminDao;
+import dao.UserDao;
 import entity.Admin;
+import entity.User;
 
 public class AdminService {
 
@@ -19,7 +21,7 @@ public class AdminService {
 		
 		//—È÷§√‹¬Î
 		Admin nadmin = new AdminDao().findAdminById(userId);
-		if(password.equals(nadmin.getUserPassword())){
+		if(password.equals(admin.getUserPassword())){
 			return true;
 		}
 		
@@ -28,12 +30,17 @@ public class AdminService {
 
 	}
 
-	public List<Admin> findall() {
+	public List<User> findall() {
 		// TODO Auto-generated method stub
 		
 		
 		
-		return new AdminDao().fingAll();
+		return new UserDao().findAll();
+	}
+	
+	
+	public boolean changestatus(String userName, boolean f) {
+		return new UserDao().changestatus(userName, f);
 	}
 
 }

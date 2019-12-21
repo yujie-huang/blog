@@ -1,14 +1,20 @@
-div{
-    border:1px solid red;
-}
-.form-group{
-    width: 300px;
-}
-.container{
-    width:350px;
-    height: 500px;
-}
 .btn{
     margin-right: 10px;
     margin-left: 10px;
+}
+
+
+
+.formcss{
+	margin-top:150px;
+    width:310px;
+    background-color:rgba(50,50,50,0.5);
+}
+
+body{
+	background-image:url(../image/v2-bda46a1f46f500084c0995b1f9392312_hd.jpg);
+	 background-size: cover;
+}
+h2{
+	color:#fff;
 }

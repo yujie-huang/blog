@@ -16,6 +16,36 @@ public class DbObject {
 	public DbObject() {
 
 	}
+	//创建一个返回自增长序列的插入方法
+	public int GenKeyexecuteUpdate(String sql,Object[] param){
+		int GenKey=-1;
+		int st_num=0;
+		ResultSet rs=null;
+		//1. 
+		try {
+			cn = open();
+			
+			//4. 		
+			st = cn.prepareStatement(sql);
+			for(int i=0; i<param.length;i++){
+				st.setObject(i+1, param[i]);
+			}
+			 st_num= st.executeUpdate();
+			 
+			 if(st_num>0){
+				 rs=st.getGeneratedKeys();
+				 rs.next();
+				 GenKey =  rs.getInt(1); 
+			 }
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		close();
+		return GenKey;		
+	}
+	
 	
 	public ResultSet executeQuery(String sql, Object[] param ){
 		rs=null; //先令为空，防止出错

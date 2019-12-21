@@ -46,13 +46,16 @@ public class LoginFilter implements Filter {
 		if(!url.contains("login")
 				&&!url.contains("index.jsp")
 				&&!url.contains("register")
-				&&!url.contains("static")){
+				&&!url.contains("static")
+				&&!url.contains("admin")){
 			HttpSession session = req.getSession();
-			String userName = (String) session.getAttribute("userName");
-			if (userName == null || userName.equals("")){
+			String userName = (String) session.getAttribute("userName");//普通用户登录检测
+			String admin = (String) session.getAttribute("admin"); //管理员登录检测
+			if ((userName == null || userName=="")&&admin==null){
 				res.sendRedirect("login");
 				return;
 			}
+			
 		}
 		
 		

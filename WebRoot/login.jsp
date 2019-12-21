@@ -19,8 +19,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body>
     <div class="container"> 
-            <h2 class="text-center">请登录</h2>   
-        <form action="login" id="form1" method="post">
+            
+        <form action="login" id="form1" method="post" class="container formcss">
+        <h2 class="text-center">请登录</h2>   
                
             <div class="form-group">
                 <label for="user">账户：</label>
@@ -34,6 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <button type="submit" class="btn btn-primary">登录</button>
             <a href="register"><button type="button" id="reg" class="btn btn-primary">注册</button></a>
             <a href="#">忘记密码</a>
+            <a href="admin">管理员</a>
         </form>
     </div>
     <script>

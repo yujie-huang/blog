@@ -1,0 +1,16 @@
+.newtitle{
+	width:100px;
+}
+.retitle{
+	background-color:#c8c8c8;
+	display:;
+	width:400px;
+	height:50px;
+	position:absolute;
+	border:1px #000 solid;
+	left:50%;
+	top:50%;
+	margin-left:-150px;
+	margin-top:-150px;
+	
+	}

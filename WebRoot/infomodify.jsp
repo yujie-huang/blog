@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<%@ include file="header.jsp" %>
     	<div class="content">
     		<div class="left-bar1">
-    			<jsp:include page="usercenterTP.jsp"/>
+    			<%@ include file="usercenterTP.jsp" %>
     		</div>
     		<div class="right-bar1">
     		<form action = "infomodify" method="post">

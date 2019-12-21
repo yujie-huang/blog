@@ -18,16 +18,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" href="static/css/register.css">
 </head>
 <body>
-	<div class="container">
+	<div class="container bd1" >
+        
+        <form action="register" id="form2" method="post" class="container formcss">
         <h2 class="text-center">注册</h2>
-        <form action="register" id="form2" method="post">
             <div class="form-group">
                 <label >昵称：</label>
-                <input type="text" name="nikName" id="name1"class="form-control" value="">
+                <input type="text" name="nikName" id="name1"class="form-control" values="${user.fullName }">
             </div>
             <div class="form-group">
                 <label for="user">账户：</label> 
-                <input type="text" name="userName" id="user1"class="form-control" placeholder="长度为10"  value=>
+                <input type="text" name="userName" id="user1"class="form-control" placeholder="长度为10"  values="${user.userName }">
             </div>
             <div class="form-group">
                 <label for="password">密码：</label>
@@ -58,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     return false;
                 }
                 else if($("#pw1").val().length<8||$("#pw1").val().length>32){
-                    alert("请检查密码长度");
+                    alert("密码应在8~32位");
                     return false;
                 }
                 else if($("#pw1").val()!=$("#pw2").val()){
