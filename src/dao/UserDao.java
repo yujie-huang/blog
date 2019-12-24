@@ -2,7 +2,6 @@ package dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -143,5 +142,24 @@ public class UserDao {
 			e.printStackTrace();
 		}	
 		return false;
+	}
+
+	public boolean rePassword(String userName, String newpassword) {
+		// TODO Auto-generated method stub
+		int i = 0;
+		Object[] param = new Object[2];
+		param[1] =userName;
+		param[0] =newpassword;
+		try {
+			String sql = "update users set password=? where userName=? ";
+			i = new DbObject().executeUpdate(sql, param);
+			if (i > 0) {
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+		return false;
+		
 	}
 }

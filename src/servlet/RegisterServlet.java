@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import service.UserService;
 import entity.User;
 @WebServlet("/register")
-public class Register extends HttpServlet {
+public class RegisterServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -33,7 +33,7 @@ public class Register extends HttpServlet {
 		
 		UserService usersevice = new UserService();
 		if(usersevice.getUserByUserName(userName)!=null){
-			request.setAttribute("err", "¸ÃÕË»§ÒÑ±»×¢²á");
+			request.setAttribute("err", "ï¿½ï¿½ï¿½Ë»ï¿½ï¿½Ñ±ï¿½×¢ï¿½ï¿½");
 			request.getRequestDispatcher("register.jsp").forward(request, response);
 			
 		}

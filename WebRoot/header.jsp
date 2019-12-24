@@ -1,12 +1,17 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
      <nav id="header"> 
         <div class="floatleft log1">
-            <a href="#">code story</a>
+            <a href="index">code story</a>
         </div>
         <div class="floatleft search1">
-            <form action="#" role="search">
+            <form action="search" role="search" method="get">
                 <div >
-                    <input type="text"  name="" id="" placeholder="search">
+                    <input type="text"  name="word" id="" placeholder="search">
+                    <select name="choose">
+                    	<option value="headline">文章标题</option>
+                    	<option value="title">文章类型</option>
+                    	<option value="user">作者</option>
+                    </select>
                     <button type="submit" class="btn-default">搜索</button>
                 </div>
             </form>
@@ -14,7 +19,7 @@
         <% 
         if ( session.getAttribute("userName")!=null){
          %>
-         <div class='flaotleft'>
+         <div class='floatleft' style="padding:5px">
          	<a href='articleadd'>添加文章</a>
          </div>
          <div class='floatleft login1'><a href="userinfo">${fullName }</a></div>

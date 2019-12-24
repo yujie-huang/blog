@@ -118,4 +118,37 @@ public class TitleDao {
 		
 	}
 
+	public Title findTitleBytitleID(int i) {
+		// TODO Auto-generated method stub
+				DbObject db = new DbObject();
+				ResultSet rs = null;
+				
+				Title title=null;
+				
+				try{
+					String sql = "select * from title where type_id=?";
+					Object param[] = new Object[1];
+					param[0]=i;
+					rs = db.executeQuery(sql,param );
+					while(rs.next()){
+						title = new Title();
+						title.setType_id(rs.getInt("type_id"));
+						title.setType_name(rs.getString("type_name"));
+						title.setUserName(rs.getString("userName"));
+					}
+				}catch (SQLException e) {
+					e.printStackTrace();
+				} finally{
+					//¹
+					db.close();
+				}
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return title;
+	}
+
 }

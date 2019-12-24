@@ -44,13 +44,17 @@ public class LoginFilter implements Filter {
 		
 		String  url = req.getServletPath();
 		if(!url.contains("login")
-				&&!url.contains("index.jsp")
+				&&!url.contains("index")
 				&&!url.contains("register")
 				&&!url.contains("static")
-				&&!url.contains("admin")){
+				&&!url.contains("admin")
+				&&!url.contains("getarticlebyid")
+				&&!url.contains("search")
+				&&!url.contains("getuserbyid")
+				&&!url.contains("getarticlebytitle")){
 			HttpSession session = req.getSession();
-			String userName = (String) session.getAttribute("userName");//ÆÕÍ¨ÓÃ»§µÇÂ¼¼ì²â
-			String admin = (String) session.getAttribute("admin"); //¹ÜÀíÔ±µÇÂ¼¼ì²â
+			String userName = (String) session.getAttribute("userName");//ï¿½ï¿½Í¨ï¿½Ã»ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½
+			String admin = (String) session.getAttribute("admin"); //ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Â¼ï¿½ï¿½ï¿½
 			if ((userName == null || userName=="")&&admin==null){
 				res.sendRedirect("login");
 				return;

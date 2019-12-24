@@ -1,0 +1,13 @@
+#content{
+    display: flex;
+}
+.header1,.footer{
+    height: 50px;
+}
+.left-bar1{
+    flex: 2;
+
+}
+.right-bar1{
+    flex: 7;
+}

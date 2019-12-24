@@ -37,13 +37,7 @@ public class TitleService {
 		return false;
 	}
 	
-	public ArrayList<Article> findArticleBytype_id(String type_id){
-		ArrayList<Article> list = new ArticleDao().findArticleBytype_id(type_id);
-		
-		return list;
-		
-		
-	}
+
 
 	public boolean delTitle(String type_id) {
 		// TODO Auto-generated method stub
@@ -55,5 +49,9 @@ public class TitleService {
 		return false;
 	}
 	
+	public Title findTitleBytitleID(int i){
+		return new TitleDao().findTitleBytitleID(i);
+		
+	}
 
 }

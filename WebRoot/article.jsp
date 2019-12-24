@@ -21,40 +21,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
    <%@ include file="header.jsp" %>
     <div id="content" class="container">
-        <div class="leftcontent floatleft">
             <div class="article">
-                <div>2019/9/10·by huangyujie</div>
+                <div>${article.publish_date}·by <a href="getuserbyid?ID=${article.userName }">${article.fullName }</a></div>
                 <div>
-                    <h1>follow your heart</h1>
+                    <h1>${article.headline }</h1>
                 </div>
                 <div>
-                        “Your time is limited, don’t waste it living someone else’s life. Don’t be trapped by dogma（教条）, which is living the result of other people’s thinking. Don’t let the noise of other opinions drown your own inner voice. And most important, have the courage to follow your heart and intuition（直觉）, they somehow already know what you truly want to become. Everything else is secondary.”
-                        –Steve Jobs
+                      ${ article.content }
                 </div>
-                <div>未分类</div>
+                <div><a href="getarticlebytitle?typeID=${article.type_id }&userName=${article.userName}">${article.type_name }</a></div>
             </div>
-            <div>
-                <div>
-                    <h2>发表评论</h2>
-                </div>
-                <div>
-                    <form action="">
-                        评论：<br>
-                        <textarea name="" id="" cols="100" rows="10"></textarea>
-                        <br>
-                        <button class="danger btn btn-primary">发表评论</button>
-                    </form>
-                </div>
-            </div>  
-        </div>
-        <div class="rightcontent floatleft">
-            <div>
-                近期添加。。。<br>
-            </div>
-            <div>
-
-            </div>
-        </div>
+  
+       
         
     </div>
     <%@ include file="footer.jsp" %>

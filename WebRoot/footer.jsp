@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-  	<div>
+  	<div class="container " style="TEXT-ALIGN: center;" >
      <hr>
-        &copy;2019
+       <p > &copy;2019-12 BY HuangYujie</p>
     </div>
 

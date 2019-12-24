@@ -44,15 +44,18 @@ public class ArticleAddServlet extends HttpServlet {
 		article.setHeadline(request.getParameter("headline"));
 		article.setContent(request.getParameter("article"));
 		article.setUserName((String) session.getAttribute("userName"));
-		article.setType_id(request.getParameter("type_id"));
+		article.setType_id(Integer.parseInt(request.getParameter("type_id")));
 		
-		//获取当前时间并格式化
+		//
 		Date dN = new Date();
-		SimpleDateFormat ft = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-		article.setPublish_date(ft.format(dN));
+		SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd HH:MM:ss");
+		String nowdateString=ft.format(dN);
+		article.setPublish_date(nowdateString);
+		System.out.println(ft.format(dN));
+		
 		ArticleService articleservice = new ArticleService();
 		if(articleservice.articleAdd(article)!=null){
-			response.sendRedirect("index");
+			response.sendRedirect("getarticlebyid?ID="+article.getArticle_id());
 			
 		}
 		else {

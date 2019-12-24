@@ -19,7 +19,7 @@ public class AdminService {
 		String password = admin.getUserPassword();
 		
 		
-		//ÑéÖ¤ÃÜÂë
+		//
 		Admin nadmin = new AdminDao().findAdminById(userId);
 		if(password.equals(admin.getUserPassword())){
 			return true;

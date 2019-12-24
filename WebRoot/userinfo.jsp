@@ -7,29 +7,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<base href="<%=basePath%>">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="static/css/userinfo.css">
-    <link rel="stylesheet" href="static/css/usercenter.css">
-    <script src="static/js/jquery-3.3.1.min.js"></script>
-    <script src="static/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="./css/index.css">
+<base href="<%=basePath%>">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<link rel="stylesheet" href="static/css/usercenter.css">
+<script src="static/js/jquery-3.3.1.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="static/css/index.css">
 </head>
 <body>
-	<%@ include file="header.jsp" %>
+	<%@ include file="header.jsp"%>
 	<div class="content">
-	<div class="left-bar1">
-	<jsp:include page="usercenterTP.jsp"></jsp:include>
+		<div class="left-bar1">
+			<%@ include file="usercenterTP.jsp"%>
+		</div>
+		<div class="right-bar1">
+			<span>姓名：${user.fullName}</span><br>
+			<span>用户名：${user.userName }</span><br>
+			<span>性别：${user.sex }</span> <br>
+			<span>出生日期：${user.birth }</span> <br>
+			<span>手机${user.phone }：</span><br>
+			<span>Email：${user.email }</span><br>
+			<span>微信号：${user.wechat }</span><br>
+			<span>描述信息：${user.information }</span><br> 
+			<span>注册日期：${user.regis_date }</span>
+			<br>
+
+		</div>
 	</div>
-    <div class="right-bar1">
-        <span>登录名： ${user.userName}</span> <br>
-        <span>姓名：${user.fullName}</span><br>
-        
-    </div>
-    </div>
-    <%@ include file="footer.jsp" %>
+	<%@ include file="footer.jsp"%>
 </body>
 </html>

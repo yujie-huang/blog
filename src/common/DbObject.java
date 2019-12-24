@@ -9,14 +9,14 @@ import java.sql.Statement;
 
 public class DbObject {
 	
-	Connection cn = null;//ÉêÃ÷Á¬½Ó
+	Connection cn = null;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	PreparedStatement st = null;
 	ResultSet rs = null;
 
 	public DbObject() {
 
 	}
-	//´´½¨Ò»¸ö·µ»Ø×ÔÔö³¤ÐòÁÐµÄ²åÈë·½·¨
+	//ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄ²ï¿½ï¿½ë·½ï¿½ï¿½
 	public int GenKeyexecuteUpdate(String sql,Object[] param){
 		int GenKey=-1;
 		int st_num=0;
@@ -26,17 +26,23 @@ public class DbObject {
 			cn = open();
 			
 			//4. 		
-			st = cn.prepareStatement(sql);
+			st = cn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 			for(int i=0; i<param.length;i++){
 				st.setObject(i+1, param[i]);
 			}
-			 st_num= st.executeUpdate();
+				 st.executeUpdate();
 			 
-			 if(st_num>0){
+				 System.out.println("db"+ 111111);
 				 rs=st.getGeneratedKeys();
-				 rs.next();
-				 GenKey =  rs.getInt(1); 
-			 }
+				 
+				 System.out.println("db"+ 22222);
+				 if(rs.next()){
+					 System.out.println("db"+ 33333);
+					 GenKey =  rs.getInt(1); 
+				 }
+				
+				 
+			 
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -48,17 +54,22 @@ public class DbObject {
 	
 	
 	public ResultSet executeQuery(String sql, Object[] param ){
-		rs=null; //ÏÈÁîÎª¿Õ£¬·ÀÖ¹³ö´í
+		rs=null; //ï¿½ï¿½ï¿½ï¿½Îªï¿½Õ£ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½
 		
 		//1. 
 		try {
 			cn = open();
 			
-			//4. 		
-			st = cn.prepareStatement(sql);
+			//4. 
+			
+				st = cn.prepareStatement(sql);
 			
 			for(int i=0;param!=null&& i<param.length;i++){
-				st.setObject(i+1, param[i]);
+				if(sql.contains("like"))
+					st.setObject(i+1,"%"+ param[i]+"%");
+				else {
+					st.setObject(i+1, param[i]);
+				}
 			}
 			 rs = st.executeQuery();
 			

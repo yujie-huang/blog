@@ -32,8 +32,12 @@ public class LoginServlet extends HttpServlet {
 		
 		UserService userservice = new UserService();
 		if(userservice.login(userName,password)){
+
 			HttpSession session = request.getSession();
 			session.setAttribute("userName", userName);
+			String fullName = new UserService().getUserByUserName(userName).getFullName();
+			session.setAttribute("fullName", fullName);
+			
 			response.sendRedirect("index");
 		}
 		else {

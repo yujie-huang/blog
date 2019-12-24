@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>添加文章</title>
+    <title>修改文章</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -18,10 +18,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<link rel="stylesheet" href="static/css/bootstrap.min.css">
-	<script src="static/js/jquery-3.3.1.min.js"></script>
-    <script src="static/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="static/css/index.css">
-	<link rel="stylesheet" href="static/css/usercenter.css">
+		<script src="static/js/jquery-3.3.1.min.js"></script>
+    	<script src="static/js/bootstrap.min.js"></script>
+	   <link rel="stylesheet" href="static/css/index.css">
+	   <link rel="stylesheet" href="static/css/usercenter.css">
+	  
 
 
   </head>
@@ -32,13 +33,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<%@ include file="usercenterTP.jsp" %>
 		</div>
 		<div class="right-bar1 ">
-		<form action="articleadd" method="post" class="container" >
+		<form action="artupdate" method="post" class="container" >
   <div id="titlediv">
-            
-                <span style="font-size: 20px;"><strong>标题：</strong></span>
-                <input id="headline" type="text" placeholder="请输入标题" name="headline" value="">
-                <span style="font-size: 20px;"><strong>类型：</strong></span>
-                <select name="type_id">
+  				ID：<input type="text" value="${article.article_id }" readonly="readonly" name="article_id">
+                <span style="font-size: 24px;"><strong>标题：</strong></span><input id="headline" type="text" placeholder="请输入标题" name="headline"  value="${article.headline }">
+                <span style="font-size: 24px;"><strong>类型：</strong></span>
+                <select name="type_id" class="selector" >
   			<c:forEach items="${list}" var="title">
   				<option value="${title.type_id }"> ${title.type_name }</option>
   			</c:forEach>
@@ -47,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </h1>
    </div>
     <div class="container" id="ediv1">
-     
+	${article.content }
     </div>
     HTML代码
      <textarea id="text1"  name="article"></textarea>
@@ -55,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	<%@ include file="footer.jsp"%>
   </body>
-  
+   <p id="art_title_id"  style="visibility: hidden;">${article.type_id }</p>
   <script type="text/javascript" src="static/js/wangEditor.min.js"></script>
     <script type="text/javascript">
         var E = window.wangEditor;
@@ -68,5 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         editor.create()
         // 初始化 textarea 的值
         $text1.val(editor.txt.html())
+
+        
     </script>
 </html>

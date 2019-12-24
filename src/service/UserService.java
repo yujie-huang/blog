@@ -17,9 +17,20 @@ import entity.User;
 
 public class UserService {
 	
+	public boolean isExist(String userName){
+		if(getUserByUserName(userName)!=null)
+			return true;
+	
+		return false;
+		
+	}
+	
 	public boolean register(User user){
 		UserDao dao = new UserDao();
-			return dao.addUser(user);
+		if(isExist(user.getUserName()))
+			return false;
+		
+		return dao.addUser(user);
 	}
 	
 	public boolean login(String userName, String password){
@@ -31,6 +42,8 @@ public class UserService {
 		if (!user.getPassword().equals(password))
 			return false;
 		
+		if(!user.isStatus())
+			return false;
 		//3.
 		
 		//4.
@@ -50,6 +63,17 @@ public class UserService {
 		
 		return rUser;
 		
+	}
+
+	public boolean rePassword(String userName,String password, String newpassword ) {
+		// TODO Auto-generated method stub
+		UserDao dao = new UserDao();
+		if(dao.findByUserName(userName).getPassword().equals(password)){
+			return dao.rePassword(userName,newpassword);
+		}
+		
+		
+		return false;
 	}
 
 }
