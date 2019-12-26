@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.print.attribute.standard.Finishings;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -20,6 +21,7 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		request.getRequestDispatcher("login.jsp").forward(request, response);
+		return ;
 		
 	}
 
@@ -29,9 +31,11 @@ public class LoginServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
+		String err="账户或密码错误，请检查后重新登录！"; //错误信息
+		
 		
 		UserService userservice = new UserService();
-		if(userservice.login(userName,password)){
+		if(userName!=null&&password!=null&&userservice.login(userName,password)){
 
 			HttpSession session = request.getSession();
 			session.setAttribute("userName", userName);
@@ -42,9 +46,11 @@ public class LoginServlet extends HttpServlet {
 		}
 		else {
 			request.setAttribute("userName", userName);
+			request.setAttribute("err", err);
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 			
 		}
+		return ;
 		
 	}
 

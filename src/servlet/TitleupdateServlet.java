@@ -44,15 +44,15 @@ public class TitleupdateServlet extends HttpServlet {
 		
 		String type_name = request.getParameter("type_name");
 		
-		System.out.println(type_name+"servlet-name");
-		System.out.println(type_id+"servlet-name");
+//		System.out.println(type_name+"servlet-name");
+//		System.out.println(type_id+"servlet-name");
 		
 		String func = request.getParameter("func");
-		//判断修改还是添加还是删除
+		//鍒ゆ柇鎵ц鏂规硶
 		if(func.equals("update")){
 			
 			TitleService tservice = new TitleService();
-			if(tservice.update(type_id,type_name))
+			if(tservice.update(type_id,type_name,userName))
 				response.getWriter().write("1");
 			else	
 				response.getWriter().write("0");

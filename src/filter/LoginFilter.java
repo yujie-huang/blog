@@ -51,12 +51,13 @@ public class LoginFilter implements Filter {
 				&&!url.contains("getarticlebyid")
 				&&!url.contains("search")
 				&&!url.contains("getuserbyid")
-				&&!url.contains("getarticlebytitle")){
+				&&!url.contains("getarticlebytitle")
+				&&!url.contains("usermanage")){
 			HttpSession session = req.getSession();
 			String userName = (String) session.getAttribute("userName");//��ͨ�û���¼���
-			String admin = (String) session.getAttribute("admin"); //����Ա��¼���
-			if ((userName == null || userName=="")&&admin==null){
-				res.sendRedirect("login");
+//			String admin = (String) session.getAttribute("admin"); //����Ա��¼���
+			if (userName == null || userName==""){
+				res.sendRedirect("/Blog/login");
 				return;
 			}
 			

@@ -113,7 +113,7 @@ public class DbObject {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			
 			
-			String url = "jdbc:sqlserver://localhost:1433;user=sa;password=123;database=blog";
+			String url = "jdbc:sqlserver://localhost:1433;user=sa;password=mis123456;database=blog";
 			
 			//3. 
 			cn = DriverManager.getConnection(url);

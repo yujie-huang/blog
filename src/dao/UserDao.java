@@ -17,12 +17,14 @@ public class UserDao {
 
 	public boolean addUser(User user) {
 		int i = 0;
-		Object[] param = new Object[3];
+		Object[] param = new Object[5];
 		param[0] = user.getUserName();
 		param[1] = user.getPassword();
 		param[2] = user.getFullName();
+		param[3] = user.getRegis_date();
+		param[4] = user.getSex();
 		try {
-			String sql = "insert into users(userName,password,fullName) values(?,?,?)";
+			String sql = "insert into users(userName,password,fullName,regist_date,sex) values(?,?,?,?,?)";
 			i = new DbObject().executeUpdate(sql, param);
 			if (i > 0) {
 				return true;
@@ -47,9 +49,16 @@ public class UserDao {
 			rs = db.executeQuery(sql, param);
 			if (rs.next()) {
 				user = new User();
-				user.setUserName(rs.getString("UserName"));
-				user.setFullName(rs.getString("FullName"));
+				user.setUserName(rs.getString("userName"));
+				user.setFullName(rs.getString("fullName"));
 				user.setPassword(rs.getString("password"));
+				user.setSex(rs.getString("sex"));
+				user.setBirth(rs.getString("birth"));
+				user.setEmail(rs.getString("email"));
+				user.setWechat(rs.getString("wechat"));
+				user.setInformation(rs.getString("information"));
+				user.setStatus(rs.getBoolean("status"));
+				user.setRegis_date(rs.getString("regist_date"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -110,6 +119,7 @@ public class UserDao {
 				user.setWechat(rs.getString("wechat"));
 				user.setInformation(rs.getString("information"));
 				user.setStatus(rs.getBoolean("status"));
+				user.setRegis_date(rs.getString("regist_date"));
 				list.add(user);
 			}
 		} catch (SQLException e) {

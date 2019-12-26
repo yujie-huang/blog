@@ -49,6 +49,40 @@ public class AdminDao {
 		return admin;	
 	}
 
+	public Admin findAdminByIdpassword(String userId, String password) {
+		// TODO Auto-generated method stub
+		DbObject db = new DbObject();
+		ResultSet rs = null;
+		Admin admin = null;
+		
+		try {
+			//4.
+			String sql = "select * from admin where userId=? and password=?";
+			Object param[] = new Object[2];
+			param[0]=userId;
+			param[1]=password;
+			rs = db.executeQuery(sql,param );	
+			if (rs.next()){
+				admin = new Admin();
+				admin.setUserId(rs.getString("userId"));
+				admin.setUserPassword(rs.getString("password"));
+				admin.setPower(rs.getString("power"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			//¹
+			db.close();
+		}
+		try {
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return admin;	
+	}
+
 	
 	
 

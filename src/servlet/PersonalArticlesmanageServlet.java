@@ -29,7 +29,7 @@ public class PersonalArticlesmanageServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//����ɾ��
+		////删除功能在修改文章方法中
 		
 
 	}

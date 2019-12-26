@@ -27,17 +27,22 @@ public class AdminloginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		Admin admin = new Admin();
-		admin.setUserId(request.getParameter("u"));
-		admin.setUserPassword(request.getParameter("p"));
+		String userId = request.getParameter("u");
+		String password = request.getParameter("p");
+		if(userId!=null&&password!=null){
+			admin.setUserId(userId);
+			admin.setUserPassword(password);
 		
-		if(new AdminService().login(admin)){
-			HttpSession session = request.getSession();
-			session.setAttribute("admin", admin.getUserId()); //Çø·Ö¹ÜÀíÔ±ÓëÆÕÍ¨ÓÃ»§
-			response.sendRedirect("usermanage");
-		}
+			if(new AdminService().login(admin)){
+				HttpSession session = request.getSession();
+				session.setAttribute("admin", admin.getUserId()); //ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½Í¨ï¿½Ã»ï¿½
+				response.sendRedirect("usermanage");
+			}
 		else {
 			response.sendRedirect("admin");
 		}
+		} 
+		else response.sendRedirect("admin");
 
 	}
 

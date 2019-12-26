@@ -5,54 +5,55 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
   <head>
     <base href="<%=basePath%>">
-    
-    <title>修改文章</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
+        <title>修改文章</title>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
 	<link rel="stylesheet" href="static/css/bootstrap.min.css">
-		<script src="static/js/jquery-3.3.1.min.js"></script>
-    	<script src="static/js/bootstrap.min.js"></script>
-	   <link rel="stylesheet" href="static/css/index.css">
-	   <link rel="stylesheet" href="static/css/usercenter.css">
-	  
+	<script src="static/js/jquery-3.3.1.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="static/css/usercenter.css">
+	<link rel="stylesheet" href="static/css/header.css">
+	  <link rel="stylesheet" href="static/css/footer.css">
 
 
   </head>
  
  <%@ include file="header.jsp"%>
-	<div class="content">
-		<div class="left-bar1">
+ <div class="content">
 		<%@ include file="usercenterTP.jsp" %>
-		</div>
 		<div class="right-bar1 ">
-		<form action="artupdate" method="post" class="container" >
-  <div id="titlediv">
-  				ID：<input type="text" value="${article.article_id }" readonly="readonly" name="article_id">
-                <span style="font-size: 24px;"><strong>标题：</strong></span><input id="headline" type="text" placeholder="请输入标题" name="headline"  value="${article.headline }">
-                <span style="font-size: 24px;"><strong>类型：</strong></span>
-                <select name="type_id" class="selector" >
+		
+		<form action="artupdate" method="post" class="" style="margin-top:10px;width:90%;margin-left:1%;">
+  			<div id="titlediv">
+            	ID：<input type="text" value="${article.article_id }" style="border:0;outline:none;" readonly="readonly"  name="article_id">
+                <span style="font-size: 20px;">标题：</span>
+                <input id="headline" type="text"  placeholder="请输入标题" name="headline" value="${article.headline }">
+                <span style="font-size: 20px;"><strong>类型：</strong></span>
+                <select name="type_id">
   			<c:forEach items="${list}" var="title">
   				<option value="${title.type_id }"> ${title.type_name }</option>
   			</c:forEach>
 				</select>             
-                <input style="margin-left:80px; text-align: center;" type="submit" value="提交">
-            </h1>
-   </div>
-    <div class="container" id="ediv1">
-	${article.content }
-    </div>
-    HTML代码
-     <textarea id="text1"  name="article"></textarea>
-  </form>
+                <input style="margin-left:80px; text-align: center;" type="submit" class="btn btn-success btn-sm" value="提交">
+            
+   			</div>
+   			 	<div class="" id="ediv1">
+     				${article.content }
+    			</div>
+    		<div class="form-group">
+    			<textarea id="text1"  name="article" class="form-control" style=" flex-wrap:wrap"></textarea>
+    		</div>	
+     		
+  		</form>
 	</div>
+ </div>
 	<%@ include file="footer.jsp"%>
   </body>
    <p id="art_title_id"  style="visibility: hidden;">${article.type_id }</p>

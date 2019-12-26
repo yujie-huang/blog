@@ -5,42 +5,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'user.jsp' starting page</title>
+    <title>${user.fullName}的主页</title>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
 	<link rel="stylesheet" href="static/css/bootstrap.min.css">
 	<script src="static/js/jquery-3.3.1.min.js"></script>
 	<script src="static/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="static/css/index.css">
 	<link rel="stylesheet" href="static/css/user.css">
+	<link rel="stylesheet" href="static/css/header.css">
+	<link rel="stylesheet" href="static/css/footer.css">
 
   </head>
   
   <body>
-  	<div class="header">
    	<%@ include file="header.jsp" %>
-   	</div>
    	<div id="content">
    	<div class="left-bar1">
-		<span>姓名：${user.fullName}</span><br>
-		<span>用户名：${user.userName }</span><br>
-		<span>性别：${user.sex }</span> <br>
-		<span>描述信息：${user.information }</span><br> 
-		<span>注册日期：${user.regis_date }</span>
+		<div class="card">
+		 	<div class="card-header">${user.fullName}的个人资料</div>
+			<div class="card-body">
+			<span>姓名：${user.fullName}</span><br>
+			<span>用户名：${user.userName }</span><br>
+			<span>性别：${user.sex }</span> <br>
+			<span>描述信息：${user.information }</span><br> 
+			<span>注册日期：${user.regis_date }</span>
+			</div>
+		</div>
 	</div>
-    <div  class="container right-bar1">
+    <div  class="right-bar1">
     
         <table class="table table-hover table-striped">
 				<thead>
@@ -65,8 +64,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</table>
     </div>
     </div>
-    <div class="footer">
-     <%@ include file="footer.jsp" %>
-    </div>
+
+<%@ include file="footer.jsp" %>
+
   </body>
 </html>

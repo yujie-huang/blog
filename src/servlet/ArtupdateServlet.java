@@ -33,7 +33,7 @@ public class ArtupdateServlet extends HttpServlet {
 
 		Article article = new ArticleService().getArticleby_ID(artID);
 		request.setAttribute("article", article);
-		System.out.println(article.getArticle_id());
+//		System.out.println(article.getArticle_id());
 		request.getRequestDispatcher("artupdate.jsp").forward(request, response);
 
 	}
@@ -48,7 +48,7 @@ public class ArtupdateServlet extends HttpServlet {
 		String func = request.getParameter("func");
 		String artID=request.getParameter("article_id");
 		
-		System.out.println(artID);
+//		System.out.println(artID);
 		 int aID=Integer.parseInt(artID);
 		
 		if(func!=null){  //删除
@@ -72,7 +72,7 @@ public class ArtupdateServlet extends HttpServlet {
 			SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd HH:MM:ss");
 			String nowdateString=ft.format(dN);
 			article.setRevise_date(nowdateString);
-			System.out.println(ft.format(dN));
+//			System.out.println(ft.format(dN));
 			
 			ArticleService articleservice = new ArticleService();
 			if(articleservice.articleUpdate(article)!=null){

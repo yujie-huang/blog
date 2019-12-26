@@ -17,12 +17,11 @@ public class AdminService {
 		// TODO Auto-generated method stub
 		String userId = admin.getUserId();
 		String password = admin.getUserPassword();
-		
-		
-		//
-		Admin nadmin = new AdminDao().findAdminById(userId);
-		if(password.equals(admin.getUserPassword())){
+		Admin nadmin = new AdminDao().findAdminByIdpassword(userId,password);
+		if(nadmin!=null){
+			
 			return true;
+		
 		}
 		
 		return false;
@@ -41,6 +40,12 @@ public class AdminService {
 	
 	public boolean changestatus(String userName, boolean f) {
 		return new UserDao().changestatus(userName, f);
+	}
+
+	public boolean rePassword(String userName, String newpassword) {
+		// TODO Auto-generated method stub
+		
+		return new UserDao().rePassword(userName, newpassword);
 	}
 
 }

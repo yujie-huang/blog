@@ -151,4 +151,34 @@ public class TitleDao {
 				return title;
 	}
 
+	public boolean findTitleByName(String type_name, String userName) {
+		// TODO Auto-generated method stub
+		DbObject db = new DbObject();
+		ResultSet rs = null;
+		 boolean f=false;
+		
+		try{
+			String sql = "select * from title where type_name=? and userName=?";
+			Object param[] = new Object[2];
+			param[0]=type_name;
+			param[1]=userName;
+			rs = db.executeQuery(sql,param);
+			if(rs.next()){
+				 f=true;
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			//¹
+			db.close();
+		}
+		try {
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return f;
+	}
+
 }

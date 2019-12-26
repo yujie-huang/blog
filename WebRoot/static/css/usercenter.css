@@ -1,29 +1,15 @@
-div{
-    border:  1px red solid ;
-}
+
 .content{
     display: flex;
 }
-.header1,.footer{
-    height: 50px;
+#content{
+    display: flex;
 }
 .left-bar1{
-    flex: 2;
+    flex-grow: 2;
 
 }
 .right-bar1{
-    flex: 7;
+   flex-grow: 8;
 }
 
-.left-bar1,.right-bar1{
-
-}
-.li1{
-	margin-left:20px;
-}
-
-#hello{
-    position: relative;
-    left: 20px;
-    top: 20px;
-}

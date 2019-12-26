@@ -35,7 +35,7 @@ public class UserService {
 	
 	public boolean login(String userName, String password){
 		User user = getUserByUserName(userName);
-		if (user == null)
+		if (user == null||user.getPassword()==null)
 			return false;
 		
 		//2.

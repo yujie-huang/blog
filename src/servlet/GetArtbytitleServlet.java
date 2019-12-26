@@ -15,7 +15,7 @@ import service.UserService;
 import entity.Article;
 import entity.User;
 @WebServlet("/getarticlebytitle")
-public class GettitleArtbytitleServlet extends HttpServlet {
+public class GetArtbytitleServlet extends HttpServlet {
 
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -25,10 +25,10 @@ public class GettitleArtbytitleServlet extends HttpServlet {
 			String typeID = request.getParameter("typeID");
 			
 			ArrayList<Article> list = new ArticleService().getArticlesbyTitle_id(typeID);
+			
 			User user = new UserService().getUserByUserName(userName);
 			request.setAttribute("list", list);
 			request.setAttribute("user", user);
-			System.out.println(111111);
 			request.getRequestDispatcher("user.jsp").forward(request, response);
 
 	}

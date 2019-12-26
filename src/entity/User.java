@@ -4,7 +4,7 @@ public class User {
 	private String fullName = null;
 	private String userName = null;
 	private String password = null;
-	private String sex = null;
+	private String sex = "-1"; //如不设置，默认为-1
 	private String birth = null;
 	private String phone =null;
 	private String email = null;

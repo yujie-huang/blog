@@ -51,7 +51,7 @@ public class ArticleAddServlet extends HttpServlet {
 		SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd HH:MM:ss");
 		String nowdateString=ft.format(dN);
 		article.setPublish_date(nowdateString);
-		System.out.println(ft.format(dN));
+//		System.out.println(ft.format(dN));
 		
 		ArticleService articleservice = new ArticleService();
 		if(articleservice.articleAdd(article)!=null){

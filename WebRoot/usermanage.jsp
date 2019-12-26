@@ -4,17 +4,14 @@
 	String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 <head>
 <base href="<%=basePath%>">
-<title>My JSP 'usermanage.jsp' starting page</title>
-
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="cache-control" content="no-cache">
-<meta http-equiv="expires" content="0">
-<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-<meta http-equiv="description" content="This is my page">
+<title>后台用户管理中心</title>
+ <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" href="static/css/admin.css">
 <link rel="stylesheet" href="static/css/bootstrap.min.css">
 <script src="static/js/jquery-3.3.1.min.js"></script>
@@ -41,7 +38,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<th>wechat</th>
 						<th>information</th>
 						<th>statue</th>
+						<th>rePassword</th>
 						<th>more</th>
+						
 
 
 
@@ -54,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					            		String stu=null,stucss=null;
 					            		if(user.isStatus()){
 					            			stu="已启用";
-					            			stucss="btn-success";    //初始化按钮颜色
+					            			stucss="btn-success";    //初始化按钮颜色状态
 					            			}
 					            		else{
 					            			stu="已禁用";
@@ -73,6 +72,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<td><%=user.getWechat()%></td>
 						<td><%=user.getInformation()%></td>
 						<td><button class="status btn  btn-sm  <%=stucss%>"><%=stu%></button></td>
+						<td><button class="repassword btn btn-sm btn-danger" data-toggle="modal" data-target="#myModal">重置密码</button></td>
 						<td><a href="#">更多</a></td>
 					</tr>
 					<%
@@ -84,7 +84,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 		</div>
 	</div>
-
+	
+<!-- 模态框 --用于添加新密码-->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+ 
+      <!-- 模态框头部 -->
+      <div class="modal-header">
+        <h4 class="modal-title">请输入新密码</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+ 
+      <!-- 模态框主体 -->
+      
+      <div class="modal-body">
+       	<input type="text" class="newpassword form-control">
+      </div>
+ 
+      <!-- 模态框底部 -->
+      <div class="modal-footer">
+      	<button  type="button" class="btn btn-success commit" data-dismiss="modal">提交</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+      </div>
+ 
+    </div>
+  </div>
+</div>
+<!--./模态-->
 	<script>
 		$(function() {
 			$(".status").click(function() {
@@ -104,6 +131,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					type : "post",
 					url : "usermanage",
 					data : {
+						"func": "change",
 						"userName" : user,
 						"statu" : fs
 					},
@@ -127,7 +155,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 				});
 			});
+			
+			
+			$(".repassword").click(function(){
+				var user = $(this).parent().siblings(".backUserNAme").text();
+				var newpassword;
+				$(".commit").click(function(){
+					newpassword=$(".newpassword").val();
+					console.log(newpassword)
+					$.ajax({
+					type : "post",
+					url : "usermanage",
+					data : {
+						"func": "repwd",
+						"userName" : user,
+						"newpassword" : newpassword
+					},
+					datatype : "json",
+					success : function(data) {
+						if (data == "1" ) {
+							alert("修改成功")
+						}
+						if (data == "0" ) {
+							alert("修改失败！")
+						}
 
+					}
+
+				});
+				});
+				
+			});
 		});
 	</script>
 

@@ -5,9 +5,9 @@ public class Admin {
 	public Admin() {
 		// TODO Auto-generated constructor stub
 	}
-	private String userId;
-	private String userPassword;
-	private String power;
+	private String userId = null;
+	private String userPassword = null;
+	private String power = null;
 //	private String  string;
 	public String getUserId() {
 		return userId;

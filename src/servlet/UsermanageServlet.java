@@ -22,7 +22,7 @@ public class UsermanageServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		if(session.getAttribute("admin")!=null){ //¼ì²âÊÇ·ñÎª¹ÜÀíÔ±µÇÂ¼
+		if(session.getAttribute("admin")!=null){ //ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Â¼
 			AdminService service = new AdminService();
 			List<User> list = service.findall();
 			request.setAttribute("list", list);
@@ -40,32 +40,33 @@ public class UsermanageServlet extends HttpServlet {
 		
 		String userName = request.getParameter("userName");
 		String statu = request.getParameter("statu");
+		String func = request.getParameter("func");//è·å–æ‰§è¡Œæ–¹æ³•
 		
-		System.out.println(statu);
+		System.out.println(func);
+		
 		AdminService adminService = new AdminService();
-		if(statu.equals("1")){
-//			 PrintWriter out = response.getWriter();
-			  
-			if(adminService.changestatus(userName, true))
-//				out.print("1");
-				response.getWriter().write("1");
-			else	
-				response.getWriter().write("0");
-//			out.print("0");
-//			out.flush();
-//			out.close();
-		}
-		else if(statu.equals("0")){
-//			 PrintWriter out = response.getWriter();
-			  
-				if(adminService.changestatus(userName, false))
-//					out.print("1");
+		if(func.equals("change")){
+			if(statu.equals("1")){
+				if(adminService.changestatus(userName, true))
 					response.getWriter().write("1");
-				else 
+				else	
 					response.getWriter().write("0");
-//					out.print("0");
-//				out.flush();
-//				out.close();
+			}
+			else if(statu.equals("0")){
+					if(adminService.changestatus(userName, false))
+						response.getWriter().write("1");
+					else 
+						response.getWriter().write("0");
+			}
+		}
+		else if(func.equals("repwd")){
+			String newpassword = request.getParameter("newpassword");
+			if(new AdminService().rePassword(userName,newpassword)){
+				response.getWriter().write("1");
+			}
+			else {
+				response.getWriter().write("0");
+			}
 		}
 
 	}

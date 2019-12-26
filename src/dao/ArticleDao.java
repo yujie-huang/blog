@@ -138,7 +138,7 @@ public class ArticleDao {
 
 		try {
 			// 4.
-			String sql = "select * from articlefull ";
+			String sql = "select * from articlefull order by publish_date DESC";
 
 			rs = db.executeQuery(sql, null);
 			while (rs.next()) {

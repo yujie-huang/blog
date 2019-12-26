@@ -17,9 +17,14 @@ public class TitleService {
 	
 	public Title addTitle(String typeName,String userName){
 		TitleDao daoTitle =new TitleDao();
-		System.out.println(typeName);
-		Title title = daoTitle.addTitle(userName, typeName);
-		return title;
+//		System.out.println(typeName);
+		if(!isExist(typeName, userName)){
+			Title title = daoTitle.addTitle(userName, typeName);
+			return title;
+		}
+		else {
+			return null;
+		}
 		
 	}
 	
@@ -29,10 +34,10 @@ public class TitleService {
 		return list;
 	}
 
-	public boolean update(String type_id, String type_name) {
+	public boolean update(String type_id, String type_name,String userName) {
 		// TODO Auto-generated method stub
 		TitleDao tDao = new TitleDao(); 
-		if(tDao.update(type_id, type_name))
+		if(!isExist(type_name, userName)&&tDao.update(type_id, type_name))
 			return true;
 		return false;
 	}
@@ -41,7 +46,7 @@ public class TitleService {
 
 	public boolean delTitle(String type_id) {
 		// TODO Auto-generated method stub
-		if(new ArticleService().getArticlesbyTitle_id(type_id).size()==0&&new TitleDao().delbyID(type_id)){ //Èç¹ûÓÐÎÄÕÂÊ¹ÓÃ¸ÃÀàÐÍÔò²»ÄÜÉ¾³ý
+		if(new ArticleService().getArticlesbyTitle_id(type_id).size()==0&&new TitleDao().delbyID(type_id)){ //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½
 			return true;
 		}
 		
@@ -51,7 +56,14 @@ public class TitleService {
 	
 	public Title findTitleBytitleID(int i){
 		return new TitleDao().findTitleBytitleID(i);
-		
+	}
+	
+	public boolean isExist(String type_name,String userName){
+		if(new TitleDao().findTitleByName(type_name,userName))
+			return true;
+		else {
+			return false;
+		}
 	}
 
 }

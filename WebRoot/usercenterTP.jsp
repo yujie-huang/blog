@@ -1,26 +1,22 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-    <div class="content">
        <div class="left-bar1">
-           <span id="hello">${fullName}您好！</span>
+           <div class="card" style="margin-left:5%;margin-top:10px">
+          <span id="hello" style="margin-left:10px;margin-top:10px">${fullName}您好！</span>
            <br>
-           <br>
-           <br>
-           <div class="li1">
-            <label>账号管理</label>
-                <ul class="list">
-                    <li><a href="infomodify">资料修改</a></li>
-                    <li><a href="repassword">密码修改</a></li>
-                    <li><a href="#">注销申请</a></li>
+            <label><h4>&nbsp;账号管理:</h4></label>
+                <ul class="list list-group">
+                    <li class="list-group-item"><a href="infomodify">资料修改</a></li>
+                    <li class="list-group-item"><a href="repassword">密码修改</a></li>
+                    <li class="list-group-item"><a href="#">注销申请</a></li>
                 </ul>
                 <br>
-            <label>文章管理</label>
-                <ul class="list">
-                    <li><a href="articleadd">写文章</a></li>
-                    <li><a href="personalArticlesmanage">管理文章</a></li>
+            <label><h4>&nbsp;文章管理:</h4></label>
+                <ul class="list list-group">
+                    <li class="list-group-item"><a href="articleadd">写文章</a></li>
+                    <li class="list-group-item"><a href="personalArticlesmanage">管理文章</a></li>
+                    <li class="list-group-item"><a href="titleupdate">管理文章类型</a></li>
                 </ul>  
                 <br>
-            <a href="titleupdate">文章类型管理</a>
+            
             </div>       
         </div> 
-
-    </div>
