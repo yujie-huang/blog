@@ -26,10 +26,10 @@ public class UserService {
 	}
 	
 	public boolean register(User user){
-		UserDao dao = new UserDao();
+		
 		if(isExist(user.getUserName()))
 			return false;
-		
+		UserDao dao = new UserDao();
 		return dao.addUser(user);
 	}
 	

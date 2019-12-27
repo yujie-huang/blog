@@ -73,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<td><%=user.getInformation()%></td>
 						<td><button class="status btn  btn-sm  <%=stucss%>"><%=stu%></button></td>
 						<td><button class="repassword btn btn-sm btn-danger" data-toggle="modal" data-target="#myModal">重置密码</button></td>
-						<td><a href="#">更多</a></td>
+						<td><a href="getuserbyid?ID=<%=user.getUserName()%>">更多</a></td>
 					</tr>
 					<%
 						}

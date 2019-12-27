@@ -51,6 +51,7 @@ public class InfoModifyServlet extends HttpServlet {
 			response.sendRedirect("userinfo");
 		}
 		else {
+			request.setAttribute("user", user);
 			request.getRequestDispatcher("infomodify.jsp").forward(request, response);
 		}
 	}

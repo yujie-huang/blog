@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <input type="radio" value="女" name="sex" >女 
       <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>   
       <a href="index">直接访问</a>
-      <a href="register">登录</a>
+      <a href="login">登录</a>
       <a href="admin">管理员</a>
     </form>
   </div>

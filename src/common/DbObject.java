@@ -16,7 +16,7 @@ public class DbObject {
 	public DbObject() {
 
 	}
-	//����һ���������������еĲ��뷽��
+	//返回自增长的主键
 	public int GenKeyexecuteUpdate(String sql,Object[] param){
 		int GenKey=-1;
 		int st_num=0;
@@ -65,7 +65,7 @@ public class DbObject {
 				st = cn.prepareStatement(sql);
 			
 			for(int i=0;param!=null&& i<param.length;i++){
-				if(sql.contains("like"))
+				if(sql.contains("like")) //当包含like语句时，使用该方法。
 					st.setObject(i+1,"%"+ param[i]+"%");
 				else {
 					st.setObject(i+1, param[i]);

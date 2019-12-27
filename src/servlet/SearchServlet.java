@@ -18,18 +18,18 @@ public class SearchServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+	}
+
+
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String wordString = request.getParameter("word");
 		String funcString=request.getParameter("choose");
 		
 		ArrayList<Article> list = new ArticleService().search(wordString,funcString);
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("index.jsp").forward(request, response);
-
-	}
-
-
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
 
 	}
 

@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<c:forEach items="${list }" var="article">
 						<tr >
 							<td class="article_id">${article.article_id }</td>
-							<td>${article.headline }</td>
+							<td ><a href="getarticlebyid?ID=${article.article_id }">${article.headline }</a></td>
 							<td class="title-name">${article.type_name }</td>
 							<td><a href="artupdate?ID= ${article.article_id }" class="btn btn-info btn-sm update">修改</a></td>
 							<td><button class="btn btn-danger btn-sm delete" data-toggle="modal" data-target="#myModal">删除</button></td>
@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 				</tbody>
 			</table>
-			<a href="articleadd"><button class="btn btn-primary " >add新文章</button></a>
+			<a href="articleadd"><button class="btn btn-primary " >新文章</button></a>
         
     </div>
   </div>

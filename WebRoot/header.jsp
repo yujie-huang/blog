@@ -1,8 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <nav id="header" class="navbar navbar-expand-sm bg-dark navbar-dark" >
 	 <a class="navbar-brand" href="index">Code Story</a>
-	 <a class="navbar-brand" href="index">首页</a>
-		<form action="search" role="search" method="get" class="form-inline">
+	 
+		<form action="search" role="search" method="POST" class="form-inline">
 				<input type="text" name="word" id="" placeholder="search"class="form-control"> 
 				<select name="choose" class="form-control">
 					<option value="headline">文章标题</option>
